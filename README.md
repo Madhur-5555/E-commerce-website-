@@ -122,7 +122,14 @@
       const phone = document.getElementById("phone").value;
       const address = document.getElementById("address").value;
       const items = cart.map(item => item.name).join(", ");
-      const msg = `Order from ${name} (%2B91PHONE_NUMBER): %0AItems: ${items}%0AShipping to: ${address}`;
+      
+      let orderMsg = `New Order from MKS Wonders%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AItems:`;
+      let total = 0;
+      cart.forEach(item => {
+        orderMsg += `%0A- ${item.name} (₹${item.price})`;
+        total += item.price;
+      });
+      orderMsg += `%0A%0ATotal: ₹${total}`;
       document.getElementById("whatsapp-link").href = `https://wa.me/8433076349?text=${msg}`;
       alert("Order placed! Click WhatsApp to confirm.");
     }
