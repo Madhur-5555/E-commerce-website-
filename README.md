@@ -1,313 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MKS Wonders - Premium E-Commerce</title>
-<style>
-/* === CSS Start === */
-* {
-  margin: 0; padding: 0; box-sizing: border-box;
-}
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #fafafa;
-  color: #333;
-  line-height: 1.6;
-}
-/* Header */
-.header {
-  background: #222;
-  color: white;
-  padding: 1rem 0;
-}
-.nav-container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  font-size: 2rem;
-  font-weight: 700;
-}
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 1rem;
-  font-weight: 600;
-}
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Product Grid */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 1rem;
-  padding: 2rem;
-  max-width: 1100px;
-  margin: auto;
-}
-.product-card {
-  background: white;
-  padding: 1rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.product-card:hover {
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-}
-.product-card img {
-  max-width: 100%;
-  border-radius: 12px;
-  object-fit: cover;
-  height: 180px;
-}
-.btn-buy {
-  background: #00c851;
-  border: none;
-  padding: 0.7rem 1.2rem;
-  color: white;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 700;
-  margin-top: auto;
-  transition: background 0.3s ease;
-}
-.btn-buy:hover {
-  background: #007e33;
-}
-
-/* Reviews */
-.reviews {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
-  width: 100%;
-}
-.review p {
-  margin: 0.2rem 0;
-  font-size: 0.95rem;
-}
-
-/* Sections */
-.section-title {
-  text-align: center;
-  margin: 2rem 0 1rem 0;
-  font-size: 2rem;
-  color: #222;
-}
-.cart-section, .checkout-section, .payment-section, .thankyou-section {
-  max-width: 600px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  text-align: center;
-}
-.cart-section h2, .checkout-section h2, .payment-section h2, .thankyou-section h2 {
-  margin-bottom: 1rem;
-  color: #00c851;
-}
-.cart-section button, .checkout-section button, .payment-section button {
-  background: #00c851;
-  border: none;
-  padding: 0.7rem 1.2rem;
-  color: white;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 700;
-  transition: background 0.3s ease;
-}
-.cart-section button:hover, .checkout-section button:hover, .payment-section button:hover {
-  background: #007e33;
-}
-label {
-  display: block;
-  margin: 0.8rem 0 0.2rem 0;
-  font-weight: 600;
-  text-align: left;
-}
-input, textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  resize: vertical;
-}
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-/* Navigation Buttons for Sections */
-.nav-btn {
-  background: #00c851;
-  border: none;
-  padding: 0.6rem 1rem;
-  color: white;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 700;
-  margin: 0.5rem;
-  transition: background 0.3s ease;
-}
-.nav-btn:hover {
-  background: #007e33;
-}
-
-/* Hide all sections except home on load */
-.section {
-  display: none;
-}
-.section.active {
-  display: block;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKS Wonders - Full E-Commerce Site</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f2f2f2; }
+    header { background: #4CAF50; color: white; padding: 1rem; text-align: center; font-size: 1.8rem; font-weight: bold; }
+    nav { display: flex; justify-content: space-around; background: #333; padding: 0.5rem; }
+    nav button { background: none; border: none; color: white; font-size: 1rem; cursor: pointer; }
+    nav button:hover { text-decoration: underline; }
+    .products, .cart-section, .checkout, .credits-info { padding: 1rem; display: none; }
+    .products.active, .cart-section.active, .checkout.active, .credits-info.active { display: block; }
+    .product-card { background: white; border-radius: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.2); margin: 1rem 0; padding: 1rem; }
+    .product-card h3 { margin-top: 0; }
+    .product-card button { background: #4CAF50; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 5px; }
+    .cart-items, .review-box { margin-top: 1rem; }
+    .checkout input, .checkout textarea { display: block; width: 100%; margin: 0.5rem 0; padding: 0.5rem; }
+    .whatsapp-button { background: #25D366; color: white; padding: 0.5rem 1rem; text-decoration: none; display: inline-block; margin-top: 1rem; border-radius: 5px; }
+  </style>
 </head>
 <body>
+  <header>MKS Wonders 🛍️</header>
+  <nav>
+    <button onclick="showSection('products')">Home</button>
+    <button onclick="showSection('cart-section')">Cart 🛒</button>
+    <button onclick="showSection('checkout')">Checkout</button>
+    <button onclick="showSection('credits-info')">Credits</button>
+  </nav>  <section class="products active" id="products"></section>  <section class="cart-section" id="cart-section">
+    <h2>Your Cart</h2>
+    <div class="cart-items" id="cart-items"></div>
+    <p>Total: ₹<span id="total-price">0</span></p>
+  </section>  <section class="checkout" id="checkout">
+    <h2>Checkout</h2>
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="tel" id="phone" placeholder="Phone" required />
+    <textarea id="address" placeholder="Address"></textarea>
+    <button onclick="completePurchase()">Place Order</button>
+    <a class="whatsapp-button" id="whatsapp-link" target="_blank">WhatsApp Order 📲</a>
+  </section>  <section class="credits-info" id="credits-info">
+    <h2>Your Wallet</h2>
+    <p>You have <strong id="credits">10000</strong> credits.</p>
+    <p>Use credits to purchase your favorite items 🎮</p>
+  </section>  <script>
+    const products = [
+      { id: 1, name: "Magic Notebook", price: 250, review: "Amazing quality!", shipping: "2-3 days" },
+      { id: 2, name: "Puzzle Box", price: 499, review: "Very creative toy.", shipping: "3-5 days" },
+      { id: 3, name: "Color Pens Set", price: 199, review: "Loved the vibrant colors.", shipping: "1-2 days" },
+      { id: 4, name: "Educational Game", price: 799, review: "Fun and learning.", shipping: "4-5 days" },
+      { id: 5, name: "Birthday Decoration Kit", price: 599, review: "Made the party awesome!", shipping: "2 days" },
+      { id: 6, name: "LED Study Lamp", price: 899, review: "Perfect lighting for study.", shipping: "1-3 days" },
+      { id: 7, name: "Gift Box Surprise", price: 299, review: "Best gift ever!", shipping: "2-4 days" },
+      { id: 8, name: "Science Experiment Kit", price: 999, review: "Very educational.", shipping: "3-6 days" },
+      { id: 9, name: "Cartoon Pencil Pouch", price: 149, review: "Kids loved it!", shipping: "2 days" },
+      { id: 10, name: "Handmade Diary", price: 349, review: "Looks premium.", shipping: "2-3 days" },
+      { id: 11, name: "Crayons Mega Pack", price: 199, review: "So many shades!", shipping: "2 days" },
+      { id: 12, name: "Glow in Dark Stickers", price: 179, review: "Glows nicely at night.", shipping: "1 day" },
+      { id: 13, name: "Origami Set", price: 129, review: "Fun time pass.", shipping: "2-3 days" },
+      { id: 14, name: "Board Game Combo", price: 1099, review: "Family fun!", shipping: "4 days" },
+      { id: 15, name: "Teddy Keychain", price: 89, review: "Cute and soft.", shipping: "2 days" },
+      { id: 16, name: "Scented Gel Pens", price: 159, review: "Smells great!", shipping: "2-3 days" },
+      { id: 17, name: "Motivational Posters", price: 349, review: "Boosts mindset.", shipping: "2 days" },
+      { id: 18, name: "Cartoon Books Set", price: 699, review: "Great collection.", shipping: "3-5 days" },
+      { id: 19, name: "Kids Watch", price: 499, review: "Stylish and cool.", shipping: "3 days" },
+      { id: 20, name: "Stationery Kit", price: 599, review: "All-in-one set.", shipping: "1-2 days" }
+    ];
 
-<!-- Header -->
-<header class="header">
-  <div class="nav-container">
-    <div class="logo">MKS Wonders</div>
-    <nav>
-      <a href="#" class="nav-link" data-target="home">Home</a>
-      <a href="#" class="nav-link" data-target="cart">Cart</a>
-      <a href="#" class="nav-link" data-target="checkout">Checkout</a>
-      <a href="#" class="nav-link" data-target="payment">Payment</a>
-      <a href="#" class="nav-link" data-target="thankyou">Thank You</a>
-    </nav>
-  </div>
-</header>
+    let cart = [];
+    let credits = 10000;
 
-<!-- Sections -->
+    const productsContainer = document.getElementById("products");
+    const cartItems = document.getElementById("cart-items");
+    const totalPrice = document.getElementById("total-price");
+    const creditsDisplay = document.getElementById("credits");
 
-<!-- Home Section (Products) -->
-<section id="home" class="section active">
-  <h1 class="section-title">Welcome to MKS Wonders</h1>
-  <div class="product-grid" id="productGrid">
-    <!-- Products loaded by JS -->
-  </div>
-</section>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
 
-<!-- Cart Section -->
-<section id="cart" class="section cart-section">
-  <h2>Your Cart</h2>
-  <div id="cart-items"></div>
-  <div id="cart-total"></div>
-  <button class="nav-btn" id="checkoutBtn">Proceed to Checkout</button>
-</section>
+    function renderProducts() {
+      products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <h3>${product.name}</h3>
+          <p>₹${product.price}</p>
+          <p>Review: "${product.review}"</p>
+          <p>Shipping: ${product.shipping}</p>
+          <button onclick='addToCart(${JSON.stringify(product)})'>Add to Cart</button>
+        `;
+        productsContainer.appendChild(card);
+      });
+    }
 
-<!-- Checkout Section -->
-<section id="checkout" class="section checkout-section">
-  <h2>Checkout - Enter Details</h2>
-  <form id="checkoutForm">
-    <label for="name">Name:</label>
-    <input type="text" id="name" required />
+    function addToCart(product) {
+      if (credits >= product.price) {
+        cart.push(product);
+        credits -= product.price;
+        creditsDisplay.textContent = credits;
+        updateCart();
+      } else {
+        alert("Not enough credits!");
+      }
+    }
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" required />
+    function updateCart() {
+      cartItems.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        const div = document.createElement("div");
+        div.textContent = `${item.name} - ₹${item.price}`;
+        cartItems.appendChild(div);
+      });
+      totalPrice.textContent = total;
+    }
 
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" required />
+    function completePurchase() {
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const items = cart.map(item => item.name).join(", ");
+      const msg = `Order from ${name} (%2B91PHONE_NUMBER): %0AItems: ${items}%0AShipping to: ${address}`;
+      document.getElementById("whatsapp-link").href = `https://wa.me/8433076349?text=${msg}`;
+      alert("Order placed! Click WhatsApp to confirm.");
+    }
 
-    <label for="address">Shipping Address:</label>
-    <textarea id="address" rows="3" required></textarea>
-
-    <label for="delivery">Estimated Shipping Time (days):</label>
-    <input type="number" id="delivery" min="1" required />
-
-    <button type="submit" class="nav-btn">Continue to Payment</button>
-  </form>
-</section>
-
-<!-- Payment Section -->
-<section id="payment" class="section payment-section">
-  <h2>Payment (Using Credits)</h2>
-  <p>You have <strong id="creditsCount"></strong> credits.</p>
-  <button class="nav-btn" id="finalPayBtn">Pay Now</button>
-</section>
-
-<!-- Thank You Section -->
-<section id="thankyou" class="section thankyou-section">
-  <h2>Thank you for your order!</h2>
-  <p>Your order has been placed successfully.</p>
-  <button class="nav-btn" id="backToHomeBtn">Back to Home</button>
-</section>
-
-<script>
-/* === JS Start === */
-
-const products = [
-  {id:1, name:"Premium Notebook", price:299, img:"https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Very good quality paper.",
-    "Perfect for school and office.",
-    "Highly recommended!"
-  ]},
-  {id:2, name:"Toy Car", price:599, img:"https://images.unsplash.com/photo-1508898578281-774ac4893b59?auto=format&fit=crop&w=400&q=80", reviews: [
-    "My kid loves it!",
-    "Durable and fun.",
-    "Great value for money."
-  ]},
-  {id:3, name:"Colorful Pens Set", price:199, img:"https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Smooth ink flow.",
-    "Bright colors, long-lasting.",
-    "Excellent for artists."
-  ]},
-  {id:4, name:"Birthday Gift Box", price:899, img:"https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Lovely presentation.",
-    "Great surprise gift.",
-    "Loved the variety inside."
-  ]},
-  {id:5, name:"Classic Diary", price:399, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Beautiful cover design.",
-    "Perfect size to carry around.",
-    "Pages are smooth and thick."
-  ]},
-  {id:6, name:"Puzzle Toy", price:499, img:"https://images.unsplash.com/photo-1532635245-2f1d0f5431ee?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Challenging and fun.",
-    "Keeps me engaged for hours.",
-    "Well made with quality materials."
-  ]},
-  {id:7, name:"Greeting Cards Set", price:149, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Beautiful designs.",
-    "Perfect for any occasion.",
-    "Good quality paper."
-  ]},
-  {id:8, name:"Art Supplies Kit", price:1299, img:"https://images.unsplash.com/photo-1509228627152-4d0f8f1e3168?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Complete kit for beginners.",
-    "Colors are vibrant.",
-    "Great value for money."
-  ]},
-  {id:9, name:"Desk Organizer", price:799, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Helps keep my desk neat.",
-    "Sturdy and stylish.",
-    "Easy to assemble."
-  ]},
-  {id:10, name:"Water Bottle", price:349, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews: [
-    "Keeps water cool for hours.",
-    "Leak proof design.",
-    "Perfect size for gym."
-  ]},
-  // Add 10 more products similarly
-  {id:11, name:"Sketchbook", price:499, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews:["Great paper quality.","Ideal for artists.","Compact size."]},
-  {id:12, name:"Stuffed Toy", price:799, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews:["Soft and cuddly.","Perfect gift.","Durable stitching."]},
-  {id:13, name:"Birthday Balloons Set", price:299, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews:["Bright colors.","Easy to inflate.","Great decoration."]},
-  {id:14, name:"Marker Pens", price:249, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews:["Vibrant colors.","Long-lasting ink.","Smooth writing."]},
-  {id:15, name:"Stationery Set", price:699, img:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", reviews:["All essentials included.","Good quality.","Compact box."]},
-  {id:16, name:"Gift Wrap Paper", price:199, img:"https://images.unsplash.com/photo-1504384308090-c894fd
+    renderProducts();
+  </script></body>
+</html>
