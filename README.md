@@ -130,7 +130,7 @@
         total += item.price;
       });
       orderMsg += `%0A%0ATotal: ₹${total}`;
-      document.getElementById("whatsapp-link").href = `https://wa.me/8433076349?text=${msg}`;
+document.getElementById("whatsapp-link").href =`https://wa.me/8433076349?text=${msg}`;
       alert("Order placed! Click WhatsApp to confirm.");
     }
 
