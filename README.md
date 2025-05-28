@@ -5,7 +5,7 @@
   <title>MKS Wonders - Full E-Commerce Site</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background: #f2f2f2; }
-    header { background: #4CAF50; color: white; padding: 1rem; text-align: center; font-size: 1.8rem; font-weight: bold; }
+    header { background: linear-gradient(to right, #FFA500, #FFD700); color: white; padding: 1rem; text-align: center; font-size: 1.8rem; font-weight: bold; }
     nav { display: flex; justify-content: space-around; background: #333; padding: 0.5rem; }
     nav button { background: none; border: none; color: white; font-size: 1rem; cursor: pointer; }
     nav button:hover { text-decoration: underline; }
