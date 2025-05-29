@@ -5,7 +5,7 @@
   <title>MKS Wonders - Full E-Commerce Site</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background: #f2f2f2; }
-    header { background: linear-gradient(to right, #FFA500, #FFD700); color: white; padding: 1rem; text-align: center; font-size: 1.8rem; font-weight: bold; }
+    header { background: #4CAF50; color: white; padding: 1rem; text-align: center; font-size: 1.8rem; font-weight: bold; }
     nav { display: flex; justify-content: space-around; background: #333; padding: 0.5rem; }
     nav button { background: none; border: none; color: white; font-size: 1rem; cursor: pointer; }
     nav button:hover { text-decoration: underline; }
@@ -122,15 +122,8 @@
       const phone = document.getElementById("phone").value;
       const address = document.getElementById("address").value;
       const items = cart.map(item => item.name).join(", ");
-      
-      let orderMsg = `New Order from MKS Wonders%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AItems:`;
-      let total = 0;
-      cart.forEach(item => {
-        orderMsg += `%0A- ${item.name} (₹${item.price})`;
-        total += item.price;
-      });
-      orderMsg += `%0A%0ATotal: ₹${total}`;
-document.getElementById("whatsapp-link").href =`https://wa.me/8433076349?text=${msg}`;
+      const msg = `Order from ${name} (%2B91PHONE_NUMBER): %0AItems: ${items}%0AShipping to: ${address}`;
+      document.getElementById("whatsapp-link").href = `https://wa.me/918433076349?text=${msg}`;
       alert("Order placed! Click WhatsApp to confirm.");
     }
 
