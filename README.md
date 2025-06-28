@@ -123,7 +123,7 @@
       const address = document.getElementById("address").value;
       const items = cart.map(item => item.name).join(", ");
       const msg = `Order from ${name} (%2B91PHONE_NUMBER): %0AItems: ${items}%0AShipping to: ${address}`;
-      document.getElementById("whatsapp-link").href = `https://wa.me/918433076349?text=${msg}`;
+      document.getElementById("whatsapp-link").href = `https://madhur-5555.github.io/www.google.com/?text=${msg}`;
       alert("Order placed! Click WhatsApp to confirm.");
     }
 
